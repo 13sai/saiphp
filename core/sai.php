@@ -32,7 +32,7 @@ class sai{
 
 		if(is_file($controlFile)){
 			include $controlFile;
-			$control = new $controlClass;
+			$control = new $controlClass($control,$action);
 
 			$control->$action();
 

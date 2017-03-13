@@ -3,7 +3,7 @@ namespace app\control;
 use core\lib\model;
 class indexControl extends \core\sai{
 	public function __construct(){
-		parent::__construct();
+		parent::__construct($control,$action);
 		$m = new \app\model\optionModel();
 		$con['ORDER'] = array('id'=>'DESC');
 		$con['is_top'] = '1';
@@ -12,7 +12,6 @@ class indexControl extends \core\sai{
 	}
 	
 	public function index(){
-		
 		if(!empty(get('type'))){
 			$con["type[~]"] = get('type');
 		}

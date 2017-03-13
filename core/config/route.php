@@ -1,6 +1,6 @@
 <?php
 return array(
-	'PARSTRING' => 1,
+	'PARSTRING' => 2,
 	'CONTROL' => 'index',
 	'ACTION' => 'index',
 	'PAGESTRING' => 'p'

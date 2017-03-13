@@ -19,7 +19,7 @@ define('APP',SAI.'/'.MODULE);
 define('DEBUG',true);
 //引入vendor
 include "vendor/autoload.php";
-
+//echo 1;die();
 //调试模式
 if(DEBUG){
 	//引入调试包

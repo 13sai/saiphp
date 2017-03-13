@@ -22,15 +22,17 @@ class route{
 				
 				$matches = explode('?', trim($_surl, '/'));
 				$pathArr = explode('/', trim($matches[0], '/'));
-				
+
 				if(isset($pathArr[$parmstring])){
 					$this->control = $pathArr[$parmstring];
+				}else{
+					$this->control = conf::get('CONTROL','route');;
 				}
 				unset($pathArr[$parmstring]);
 				if(isset($pathArr[$parmstring+1])){
 					$this->action = $pathArr[$parmstring+1];
 				}else{
-					$this->action = conf::get('ACTION','route');;
+					$this->action = conf::get('ACTION','route');
 				}
 				unset($pathArr[$parmstring+1]);
 
