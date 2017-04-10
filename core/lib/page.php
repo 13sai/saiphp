@@ -64,7 +64,7 @@ class page {
 	        if (isset($_par['query'])){
 	              parse_str($_par['query'],$_query);  
 	              unset($_query[$this->nowpageStr]);  
-	              $_url = $_par['path'].'?'.http_build_query($_query);
+	              $_url = $_par['path'].'?'.http_build_query($_query).'&';
 	        }else{
 		        $_url .= '?';
 	        }
