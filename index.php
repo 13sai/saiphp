@@ -16,7 +16,7 @@ if(strpos($_SERVER['REQUEST_URI'],'/index.php/zeta') !==false){
 define('SAI',str_replace('\\','/',realpath('./')));
 define('CORE',SAI.'/core');
 define('APP',SAI.'/'.MODULE);
-define('DEBUG',true);
+define('DEBUG',flase);
 //引入vendor
 include "vendor/autoload.php";
 //echo 1;die();
