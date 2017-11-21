@@ -6,7 +6,7 @@ class conf{
 
 	//加载配置项
 	static public function get($name, $file){
-		
+        $file = strtolower($file);
 		if(isset(self::$conf[$file])){
 			return self::$conf[$file][$name];
 		}else{
@@ -17,16 +17,17 @@ class conf{
 					self::$conf[$file] = $conf;
 					return $conf[$name];
 				}else{
-					echo '没有此配置项';
+					return false;
 				}
 			}else{
-				echo '没有配置文件';
+                return false;
 			}
 		}
 	}
 
 	//加载配置文件
 	static public function all($file){
+        $file = strtolower($file);
 		if(isset(self::$conf[$file])){
 			return self::$conf[$file];
 		}else{
@@ -36,7 +37,7 @@ class conf{
 				self::$conf[$file] = $conf;
 				return $conf;
 			}else{
-				echo '没有配置文件';
+                return false;
 			}
 		}
 	}

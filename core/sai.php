@@ -22,7 +22,7 @@ class sai{
 		//调用路由类
 		$route = new \core\lib\route();
 
-		
+
 		$control = $route->control;
 		$action = $route->action;
 

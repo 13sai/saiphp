@@ -3,42 +3,47 @@
 namespace core\lib;
 use core\lib\conf;
 class route{
+	public $module;
 	public $control;
 	public $action;
-	
+
 	public function __construct(){
 		/*
 		获取url参数
 		*/
-		$parmstring = conf::get('PARSTRING', 'route');
-		$parmstring = $parmstring + ZETA;
+		$parmstring = conf::get('DEFAULT_PARSTRING', 'conf');
 		$_surl = $_SERVER['REQUEST_URI'];
-		if(isset($_surl) && $_surl != '/' && $_surl != '/index.php' && $_surl != '/index.php/zeta'){
-			
+		if(isset($_surl) && $_surl != '/' && $_surl != '/index.php'){
 			if(strpos($_surl,'/?') !== false){
-				$this->control = conf::get('CONTROL','route');
-				$this->action = conf::get('ACTION','route');
+				$this->module = conf::get('DEFAULT_MODULE','conf');
+				$this->control = conf::get('DEFAULT_CONTROL','conf');
+				$this->action = conf::get('DEFAULT_ACTION','conf');
 			}else{
-				
 				$matches = explode('?', trim($_surl, '/'));
 				$pathArr = explode('/', trim($matches[0], '/'));
 
 				if(isset($pathArr[$parmstring])){
 					$this->control = $pathArr[$parmstring];
 				}else{
-					$this->control = conf::get('CONTROL','route');;
+					$this->control = conf::get('DEFAULT_CONTROL','conf');;
 				}
 				unset($pathArr[$parmstring]);
-				if(isset($pathArr[$parmstring+1])){
-					$this->action = $pathArr[$parmstring+1];
+				if(isset($pathArr[$parmstring + 1])){
+					$this->control = $pathArr[$parmstring];
 				}else{
-					$this->action = conf::get('ACTION','route');
+					$this->control = conf::get('DEFAULT_CONTROL','conf');;
 				}
-				unset($pathArr[$parmstring+1]);
+				unset($pathArr[$parmstring + 1]);
+				if(isset($pathArr[$parmstring + 2])){
+					$this->action = $pathArr[$parmstring + 2];
+				}else{
+					$this->action = conf::get('DEFAULT_ACTION','conf');
+				}
+				unset($pathArr[$parmstring + 2]);
 
 				//url参数 get
 				$count = count($pathArr) + 1;
-				$i = $parmstring+2;
+				$i = $parmstring + 3;
 				//p($i);
 				//$_GET = array();
 				while($i < $count){
@@ -49,16 +54,10 @@ class route{
 					}
 				}
 			}
-			//多余
-			//if(!empty($_SERVER['QUERY_STRING'])){
-			//	parse_str($_SERVER['QUERY_STRING'],$urlPar);
-			//	array_merge($_GET, $urlPar);
-			//}
-			//if(!empty($_GET))$this->para = $_GET;
-			//p($_GET);
 		}else{
-			$this->control = conf::get('CONTROL','route');
-			$this->action = conf::get('ACTION','route');
+            $this->module = conf::get('DEFAULT_MODULE','conf');
+            $this->control = conf::get('DEFAULT_CONTROL','conf');
+            $this->action = conf::get('DEFAULT_ACTION','conf');
 		}
 	}
 }
