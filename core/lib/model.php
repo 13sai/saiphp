@@ -1,31 +1,33 @@
 <?php
 namespace core\lib;
 use core\lib\conf;
-class model extends \medoo{
-    public function __construct(){
-        $option = conf::all('database');
-        parent::__construct($option);
-    }
+class model extends \medoo{	
+	public function __construct()
+    {
+		$option = conf::all('database');
+		parent::__construct($option);
+	}
 
-    /*
-     * 获取列表
-     * @param $table
-     * @param $where
-     * @param $page
-     * @param $limit
-     * @param $field
-     * @param $order
-     */
-    public function lists($table, $where, $page = 1, $limit = 10, $field = '*', $order = null){
-        $result = [];
+	/*
+	 * 获取列表
+	 * @param $table
+	 * @param $where
+	 * @param $page
+	 * @param $limit
+	 * @param $field
+	 * @param $order
+	 */
+	public function lists($table, $where, $page = 1, $limit = 10, $field = '*', $order = null)
+    {
+	    $result = [];
         $result['count'] = $this->count($table, $where);
         $where['limit'] = [$limit * ($page - 1), $limit];
         if(!is_null($order)) $where['order'] = $order;
         $result['data'] = $this->select($table, $field, $where);
-        $result['page'] = $page;
-        $result['limit'] = $limit;
-        $result['total_page'] = ceil($result['count']/$result['limit']);
-        return $result;
+	    $result['page'] = $page;
+	    $result['limit'] = $limit;
+	    $result['total_page'] = ceil($result['count']/$result['limit']);
+	    return $result;
     }
 
     /*
@@ -35,7 +37,8 @@ class model extends \medoo{
 	 * @param $field
 	 * @param $order
 	 */
-    public function listAll($table, $where, $field = '*'){
+    public function listAll($table, $where, $field = '*')
+    {
         return $this->select($table, $field, $where);
     }
 
@@ -45,7 +48,8 @@ class model extends \medoo{
 	 * @param $where
 	 * @param $field
 	 */
-    public function getOne($table, $where, $field = '*'){
+    public function getOne($table, $where, $field = '*')
+    {
         return $this->get($table, $field, $where);
     }
 
@@ -54,7 +58,8 @@ class model extends \medoo{
 	 * @param $table
 	 * @param $data 为array批量插入
 	 */
-    public function insert($table, $data){
+	public function insert($table, $data)
+    {
         return $this->insert($table, $data);
     }
 
@@ -64,7 +69,8 @@ class model extends \medoo{
 	 * @param $where
 	 * @param $data 可为array
 	 */
-    public function edit($table,$where,$data){
+	public function edit($table,$where,$data)
+    {
         return $this->update($table, $data, $where);
     }
 
@@ -74,7 +80,8 @@ class model extends \medoo{
      * @param $where
      * @param $data 可为array
      */
-    public function del($table, $where){
+	public function del($table, $where)
+    {
         return $this->delete($table, $where);
     }
 
@@ -83,7 +90,8 @@ class model extends \medoo{
      * @param $table
      * @param $where
      */
-    public function hasOne($table, $where){
+    public function hasOne($table, $where)
+    {
         return $this->has($table, $where);
     }
 }

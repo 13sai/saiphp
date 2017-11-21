@@ -1,5 +1,5 @@
 <?php
-return array(
+return [
     'PARSTRING' => 1,
     'DEFAULT_MODULE' => 'app',
     'DEFAULT_CONTROL' => 'index',
@@ -7,4 +7,4 @@ return array(
     'DEFAULT_SUFFIX' => '.html',
     'PAGESTRING' => 'p',
     'MODULES' => 'app, zeta'
-);
+];

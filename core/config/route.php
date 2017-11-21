@@ -1,7 +1,4 @@
 <?php
-return array(
-	'PARSTRING' => 2,
-	'CONTROL' => 'index',
-	'ACTION' => 'index',
-	'PAGESTRING' => 'p'
-);
+return [
+    'app/index/index' => 'app/index/test',
+];
