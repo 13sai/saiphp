@@ -6,16 +6,9 @@
 3.启动框架
 */
 //定义常量
-//if(strpos($_SERVER['REQUEST_URI'],'/index.php/zeta') !==false){
-//	define('MODULE','zeta');
-//	define('ZETA',1);
-//}else{
-//	define('MODULE','app');
-//	define('ZETA',0);
-//};
 define('SAI', str_replace('\\','/',realpath('./')));
 define('CORE', SAI.'/core');
-define('DEBUG', flase);
+define('DEBUG', false);
 //引入vendor
 include "vendor/autoload.php";
 //echo 1;die();
@@ -35,7 +28,6 @@ if(DEBUG){
 }
 //导入公共函数
 include CORE.'/common/function.php';
-
 
 //导入核心文件
 include CORE.'/sai.php';

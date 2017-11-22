@@ -10,7 +10,6 @@ class sai{
 		//调用路由类
 		$route = new \core\lib\route();
 		//获取模块,控制器,方法
-
         $routes = $route->routes;
         list($moduleName, $controlName, $actionName) = explode('/', $routes);
 
