@@ -13,10 +13,9 @@
 //	define('MODULE','app');
 //	define('ZETA',0);
 //};
-define('SAI',str_replace('\\','/',realpath('./')));
-define('CORE',SAI.'/core');
-define('APP',SAI.'/'.MODULE);
-define('DEBUG',true);
+define('SAI', str_replace('\\','/',realpath('./')));
+define('CORE', SAI.'/core');
+define('DEBUG', flase);
 //引入vendor
 include "vendor/autoload.php";
 //echo 1;die();

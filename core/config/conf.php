@@ -1,10 +1,11 @@
 <?php
-// 配置
+
 return array(
-    'DEFAULT_PARSTRING' => 2,
+    'PARSTRING' => 1,
+    'DEFAULT_MODULE' => 'app',
     'DEFAULT_CONTROL' => 'index',
     'DEFAULT_ACTION' => 'index',
-    'DEFAULT_PAGESTRING' => 'p',
-    'DEFAULT_MODULE' => 'app',
+    'DEFAULT_SUFFIX' => '.html',
+    'PAGESTRING' => 'p',
     'MODULES' => 'app, zeta'
 );
