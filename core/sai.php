@@ -3,35 +3,28 @@ namespace core;
 class sai{
 	public static $classMap = array();
 	public $_options = array();
-	
-	public function __construct($module, $control, $action){
-		$smarty = new \Smarty;
-		$smarty->debugging = false;
-		$smarty->caching = false;
-		$smarty->template_dir= SAI.'/'.$module.'/views/';  //设置模板目录
-		$smarty->compile_dir = SAI.'/'.$module."/templates_c/";  //设置编译目录
-		$smarty->cache_dir = SAI.'/'.$module."/cache/";  //缓存文件夹
-		$smarty->cache_lifetime = 60;
-		$smarty->left_delimiter = "<{";  //左定界符
-		$smarty->right_delimiter = "}>"; //右定界符
-		$this->tpl = $smarty;
+	public function __construct(){
 	}
-	
+
+
 	public static function run(){
 		//调用路由类
 		$route = new \core\lib\route();
+		//获取模块,控制器,方法
 
-		$module = $route->module;
-		$control = $route->control;
-		$action = $route->action;
+        $routes = $route->routes;
+        list($moduleName, $controlName, $actionName) = explode('/', $routes);
 
-		$controlFile = SAI.'/'.$module.'/control/'.$control.'Control.php';
-		$controlClass = '\\'.$module.'\control\\'.$control.'Control';
+		$controlFile = SAI.'/'.$moduleName.'/control/'.$controlName.'Control.php';
+		$controlClass = '\\'.$moduleName.'\control\\'.$controlName.'Control';
 
 		if(is_file($controlFile)){
 			include $controlFile;
-			$control = new $controlClass($module, $control, $action);
-			$control->$action();
+			$control = new $controlClass();
+			$control->module = $moduleName;
+			$control->control = $controlName;
+			$control->action = $actionName;
+			$control->$actionName();
 		}else{
 			p('找不到控制器');
 		}
@@ -58,37 +51,11 @@ class sai{
 		}
 	}
 
-	//输出变量
-	public function assign($key, $value = null){
-		if (is_array($key)) {
-            foreach ($key as $k => $v) {
-                $this->_options[$k] = $v;
-            }
-        } else {
-            $this->_options[$key] = $value;
-        }
-	}
-
-	//解析模板  输出变量
-	public function display($file, $array = array()){
-		$_options = $this->_options;
-		if(!empty($array)){
-			foreach( $array as $key => $value )
-			{
-				$this->tpl->assign($key, $value);
-			}
-		}
-		if(!empty($_options)){
-			foreach( $_options as $key => $value )
-			{
-				$this->tpl->assign($key, $value);
-			}
-		}
-		$this->tpl->display($file);
-	}
-
-	public function code(){
-		$image = new \core\lib\image();
-		$image->code();
+	//输出
+	public function response($code, $data){
+        $data['module'] = $this->module;
+        $data['control'] = $this->control;
+        $data['action'] = $this->action;
+		return json_encode(['code' => $code, 'data' => $data]);
 	}
 }

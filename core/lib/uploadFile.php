@@ -11,7 +11,6 @@ class uploadFile{
     public $config = array();//配置
     public $files;//提交的等待上传文件
     public $ext;//文件类型
-
     /**
     * 构造函数，初始化类
     * @access public
@@ -21,10 +20,9 @@ class uploadFile{
     public function __construct($config) {
         $save_path = isset($config['save_path']) ? $config['save_path'] : './upload/';
         $allow_types = isset($config['allow_types']) ? $config['allow_types'] : 'jpg|gif|png|zip|rar';
-        $max_size = isset($config['max_size']) ? $config['max_size'] : '10280';
+        $max_size = isset($config['max_size']) ? ($config['max_size'] )*1028 : '5200000';
         $file_name = isset($config['file_name']) ? $config['file_name'] : 'time';
         $allow_null = isset($config['allow_null']) ? $config['allow_null'] : false;
-
         $this->save_path   = (preg_match("/\/$/",$save_path)) ? $save_path : $save_path . '/';
         $this->allow_types = strtolower($allow_types);
         $this->max_size = $max_size;
@@ -73,12 +71,10 @@ class uploadFile{
 	        	$i++;
 	        	$type = $this->check_file_type($file[$key]['name']);
 	        	$birthname = time().$i;
-
 	        	$pathname = $this->check_file_exist($this->save_path . $birthname , $type);
 	            move_uploaded_file($file[$key]["tmp_name"], $pathname);
 	    		array_push($result,substr($pathname,1));
     		}elseif($value['error'] == 0){
-	    		$i++;
     		}
         }
         if($i == $k){
@@ -86,7 +82,7 @@ class uploadFile{
 			$msg = '成功！';
         }else{
 	        $arguments = $result;
-	        $msg = '成功';
+	        $msg = '失败';
         }
         
         return self::output($msg, $arguments);
@@ -111,7 +107,6 @@ class uploadFile{
             return self::output($msg, $arguments);
         }
     }
-
     /*
      * 判断文件是否已存在
      * @access public
@@ -127,7 +122,6 @@ class uploadFile{
     		return $filename.'.'.$type;
 		}
     }
-
     /**
      * 取得文件类型
      * @access public
@@ -155,7 +149,6 @@ class uploadFile{
         }
         return true;
     }
-
     static protected function output($msg,$arguments){
 	    $data['result'] = $arguments;
 	    $data['info'] = $msg;
