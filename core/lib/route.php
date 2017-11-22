@@ -61,7 +61,7 @@ class route{
 		$this->routes = $this->replaceRoute($module, $control, $action);
 	}
 	
-	public function replaceRoute(&$module, &$control, &$action){
+	public function replaceRoute($module, $control, $action){
 
 	    $routes = conf::all('route');
 	    if(empty($routes)){
