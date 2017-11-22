@@ -6,7 +6,6 @@ class sai{
 	public function __construct(){
 	}
 
-
 	public static function run(){
 		//调用路由类
 		$route = new \core\lib\route();
@@ -49,13 +48,5 @@ class sai{
 				return false;
 			}
 		}
-	}
-
-	//输出
-	public function response($code, $data){
-        $data['module'] = $this->module;
-        $data['control'] = $this->control;
-        $data['action'] = $this->action;
-		return json_encode(['code' => $code, 'data' => $data]);
 	}
 }
