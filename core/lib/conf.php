@@ -10,7 +10,7 @@ class conf{
 		if(isset(self::$conf[$file])){
 			return self::$conf[$file][$name];
 		}else{
-			$path = SAI.'/core/config/'.$file.'.php';
+			$path = CORE.'config/'.$file.'.php';
 			if(is_file($path)){
 				//p(1);
 				$conf = include $path;
@@ -32,7 +32,7 @@ class conf{
 		if(isset(self::$conf[$file])){
 			return self::$conf[$file];
 		}else{
-			$path = SAI.'/core/config/'.$file.'.php';
+			$path = CORE.'config/'.$file.'.php';
 			if(is_file($path)){
 				//p(1);
 				$conf = include $path;

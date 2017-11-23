@@ -11,6 +11,7 @@ class indexControl extends control{
 
     public function test()
     {
-        echo $this->response(0,['ahb'=>1]);
+        $data = ['test'=>1,'data'=>2];
+        $this->show('test', $data);
     }
 }

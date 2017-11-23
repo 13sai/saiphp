@@ -13,7 +13,7 @@ class sai{
         $routes = $route->routes;
         list($moduleName, $controlName, $actionName) = explode('/', $routes);
 
-		$controlFile = SAI.'/'.$moduleName.'/control/'.$controlName.'Control.php';
+		$controlFile = SAI.$moduleName.'/control/'.$controlName.'Control.php';
 		$controlClass = '\\'.$moduleName.'\control\\'.$controlName.'Control';
 
 		if(is_file($controlFile)){
@@ -38,7 +38,7 @@ class sai{
 			return true;
 		}else{
 			$class = str_replace('\\','/',$class);
-			$file = SAI.'/'.$class.'.php';
+			$file = SAI.$class.'.php';
 			if(is_file($file)){
 				//p($file);
 				include $file;

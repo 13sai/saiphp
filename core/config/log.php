@@ -3,6 +3,6 @@ return [
 	'DRIVE' => 'file',
 	'OPTION' => array(
 		//'PATH'=>'log'
-		'PATH'=>SAI.'/log/'
+		'PATH'=>SAI.'log/'
 	)
 ];
