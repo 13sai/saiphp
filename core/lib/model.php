@@ -21,7 +21,7 @@ class model extends \medoo{
     {
 	    $result = [];
         $result['count'] = $this->count($table, $where);
-        $where['limit'] = [$limit * ($page - 1), $limit];
+        $where['LIMIT'] = [$limit * ($page - 1), $limit];
         if(!is_null($order)) $where['order'] = $order;
         $result['data'] = $this->select($table, $field, $where);
 	    $result['page'] = $page;

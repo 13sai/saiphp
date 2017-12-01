@@ -12,7 +12,8 @@ class control extends sai{
 
     // 输出
     public function response($code, $data = mull){
-        return json_encode(['code' => $code, 'data' => $data]);
+        header('Content-Type: application/json');
+        die(json_encode(['code' => $code, 'data' => $data]));
     }
 
     // 模板输出

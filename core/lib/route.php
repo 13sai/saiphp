@@ -26,23 +26,24 @@ class route{
 				
 				if(isset($pathArr[$parmstring])){
 					$module = $pathArr[$parmstring];
+					unset($pathArr[$parmstring]);
 				}
-				unset($pathArr[$parmstring + 1]);
+				
 				if(isset($pathArr[$parmstring + 1])){
 					$control = $pathArr[$parmstring + 1];
+					unset($pathArr[$parmstring + 1]);
 				}
-				unset($pathArr[$parmstring]);
+				
 				if(isset($pathArr[$parmstring + 2])){
 					$action = $pathArr[$parmstring + 2];
+					unset($pathArr[$parmstring + 2]);
 				}else{
 					$action = conf::get('DEFAULT_ACTION','conf');;
 				}
-				unset($pathArr[$parmstring + 2]);
-
+				
 				//url参数 get
-				$count = count($pathArr) + 1;
-				$i = $parmstring + 2;
-				//p($i);
+				$count = count($pathArr) + 2;
+				$i = $parmstring + 3;
 				//$_GET = array();
 				while($i < $count){
 					//防止出现奇数参数
@@ -63,6 +64,7 @@ class route{
 	
 	public function replaceRoute($module, $control, $action){
 	    $routes = conf::all('route');
+
 	    if(empty($routes)){
 	        return $module.'/'.$control.'/'.$action;
         }
