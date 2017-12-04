@@ -29,64 +29,25 @@ And on this basis to do a simple article publishing system what uses amazeUI.
 
 > --common   公共文件
 
-> --config   配置文件
+> --config   配置文件（数据库，路由，配置参数）
 
-> --lib      核心文件
+> --lib      核心文件（基础控制器，基础模型等）
 
 > --sai.php  运行文件
 
 > data       数据库文件 
 
-> ui         css,js 
-
-> upload     上传文件 
+> dist       静态文件
 
 > vendor     扩展类库
 
-> zeta       后台
-
-> --control  控制器
-
-> --model    模型
-
-> --views    模板 
-
 > index.php  入口文件 
 
-> composer.json  应用composer导入的类库
+> composer.json
 
-------2016/10/20
+> package.json
 
-开发使用说明：
-本地新建数据库，运行data文件下sql文件，修改配置文件下database.php，填写正确的数据库信息，配置好后就可以访问了。
 
-你可以自己再增加基础的类，建议放在核心文件夹core\lib下，也可以增加扩展类库，建议放在扩展类库vendor下。
-调用两种库都有例子（database与medoo），就不细说了。
+此版本结合前后端分离的思想，重写了核心模块，加入了自定义路由、基础控制器、基础模型，去掉了smarty，并加入时下流行的vue与webpack。
 
-当然，你也可以增加模块，比如增加手机版模块：
-复制zeta另命名为wap，
-```php
-if(strpos($_SERVER['REQUEST_URI'],'/index.php/zeta') !==false){
-	define('MODULE','zeta');
-	define('ZETA',1);
-}else{
-	define('MODULE','app');
-	define('ZETA',0);
-};
-
-//修改为
-if(strpos($_SERVER['REQUEST_URI'],'/index.php/zeta') !==false){
-	define('MODULE','zeta');
-	define('ZETA',1);
-}elseif(strpos($_SERVER['REQUEST_URI'],'/index.php/wap') !==false){
-	define('MODULE','wap');
-	define('ZETA',1);
-}else{
-	define('MODULE','app');
-	define('ZETA',0);
-};
-```
-
-然后修改对应的控制器，模型，模板文件，就ok了。
-
-------2016/11/15
+------2017/12/03
