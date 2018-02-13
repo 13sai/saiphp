@@ -1,13 +1,18 @@
 <?php
-namespace app\control;
+namespace App\Control;
 
-use core\lib\control;
-use app\model\appModel;
+use Core\Lib\Control;
+use App\Model\AppModel;
 
-class indexControl extends control{
+class IndexControl extends Control{
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function index()
+    {
+        echo 1;
     }
 
     public function getList()

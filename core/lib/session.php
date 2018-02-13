@@ -1,8 +1,7 @@
 <?php
 //路由规则
-namespace core\lib;
-use core\lib\conf;
-class session{
+namespace Core\Lib;
+class Session{
 	public function __construct(){
 		session_start();
 	}

@@ -1,8 +1,8 @@
 <?php
 //路由规则
-namespace core\lib;
-use core\lib\conf;
-class route{
+namespace Core\Lib;
+use Core\Lib\Conf;
+class Route{
 	public $module;
 	public $control;
 	public $action;

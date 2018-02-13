@@ -1,8 +1,8 @@
 <?php
 //分页
-namespace core\lib;
-use core\lib\conf;
-class page {  
+namespace Core\Lib;
+use Core\Lib\Conf;
+class Page {
     private $total;      //总记录  
     private $pagesize;    //每页显示多少条  
     public $limit;          //limit  
@@ -23,12 +23,7 @@ class page {
         $this->limit = array(($this->page-1)*$this->pagesize,$this->pagesize);
         $this->url = $this->setUrl();
         $this->bothnum = $_rollpage ? $_rollpage : 2;
-    }  
-  
-    //拦截器  
-    //private function __get($_key) {
-    //   return $this->$_key;
-    //}
+    }
 
 	//配置样式
     public function setConfig($name,$value) {

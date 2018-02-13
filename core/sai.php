@@ -1,6 +1,6 @@
 <?php
-namespace core;
-class sai{
+namespace Core;
+class Sai{
 	public static $classMap = array();
 	public $_options = array();
 	public function __construct(){
@@ -8,7 +8,7 @@ class sai{
 
 	public static function run(){
 		//调用路由类
-		$route = new \core\lib\route();
+		$route = new \core\lib\Route();
 		//获取模块,控制器,方法
         $routes = $route->routes;
         list($moduleName, $controlName, $actionName) = explode('/', $routes);

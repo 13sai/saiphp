@@ -1,8 +1,8 @@
 <?php
 //路由规则
-namespace core\lib;
-use core\lib\conf;
-class uploadFile{
+namespace Core\Lib;
+use Core\Lib\Conf;
+class UploadFile{
     public $save_path;//上传文件保存路径
     public $allow_types;//允许上传的文件扩展名，不同文件类型用“|”隔开
     public $max_size;//设置上传文件大小

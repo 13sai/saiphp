@@ -1,7 +1,7 @@
 <?php
-namespace core\lib;
+namespace Core\Lib;
 
-class conf{
+class Conf{
 	static public $conf = array();
 
 	//加载配置项

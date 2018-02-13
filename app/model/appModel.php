@@ -1,9 +1,7 @@
 <?php
-namespace app\model;
-use core\lib\model;
-class appModel extends model{	
-
-
+namespace App\Model;
+use Core\Lib\Model;
+class AppModel extends Model{
 	public function getPN($table,$id,$con = null){
 		if(!empty($con)) $reg = $con;
     	$where['ORDER'] = 'id desc';

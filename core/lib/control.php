@@ -1,8 +1,8 @@
 <?php
-namespace core\lib;
+namespace Core\lib;
 use function Composer\Autoload\includeFile;
-use \core\sai;
-class control extends sai{
+use \Core\Sai;
+class Control extends Sai{
     public $module;
     public $control;
     public $action;

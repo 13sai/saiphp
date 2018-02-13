@@ -1,7 +1,7 @@
 <?php
-namespace core\lib;
-use core\lib\conf;
-class model extends \medoo{	
+namespace Core\Lib;
+use Core\Lib\Conf;
+class Model extends \medoo{	
 	public function __construct()
     {
 		$option = conf::all('database');

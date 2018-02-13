@@ -1,7 +1,7 @@
 <?php
-namespace core\lib;
-use core\lib\conf;
-class log{
+namespace Core\Lib;
+use Core\Lib\Conf;
+class Log{
 	static $class;
 	/*
 	存储方式
