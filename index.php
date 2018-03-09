@@ -10,7 +10,7 @@ define('SAI', str_replace('\\','/',realpath('./')).'/');
 define('CORE', SAI.'core/');
 define('DEBUG', false);
 //引入vendor
-include "vendor/autoload.php";
+require_once "vendor/autoload.php";
 //echo 1;die();
 //调试模式
 if(DEBUG){
@@ -27,10 +27,10 @@ if(DEBUG){
 	ini_set('display_error','off');
 }
 //导入公共函数
-include CORE.'common/function.php';
+require_once CORE.'common/function.php';
 
 //导入核心文件
-include CORE.'sai.php';
+require_once CORE.'sai.php';
 
 //判断是否加载  如果未加载  加载之
 spl_autoload_register('\core\sai::load');
